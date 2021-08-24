@@ -23,7 +23,7 @@ setup(
         'console_scripts': [
              'talker = py_basic_examples.min_publisher:main',
              'listener = py_basic_examples.min_subscriber:main',
-             'scooby_circle = py_basic_examples.circle_scooby:main',
+             'circle_turtle = py_basic_examples.circle_turtle:main',
         ],
     },
 )
