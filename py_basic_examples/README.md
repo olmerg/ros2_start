@@ -67,7 +67,7 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 ```
-- Create the python file min_subscriber.py in the folder ~/lms_ws/src/py_basic_examples/py_basic_examples
+- Create the python file min_subscriber.py in the folder ~/utadeo_ws/src/py_basic_examples/py_basic_examples
 ```
 import rclpy
 from rclpy.node import Node
@@ -99,7 +99,7 @@ if __name__ == '__main__':
     main()
 ```
 
-- open the file ~/lms_ws/src/py_basic_examples/package.xml and modify
+- open the file ~/utadeo_ws/src/py_basic_examples/package.xml and modify
 ```
     <name>py_basic_examples</name>
     <version>0.0.0</version>
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     <license>TODO: License declaration</license>
 ```
 
-- configure the executable in the file ~/lms_ws/src/py_basic_examples/setup.py
+- configure the executable in the file ~/utadeo_ws/src/py_basic_examples/setup.py
 ```
 entry_points={
         'console_scripts': [
@@ -131,11 +131,13 @@ entry_points={
 ## testing
 
 - **console one** publisher 
-	source ~/utadeo_ws/install/setup.bash
+	cd ~/utadeo_ws
+	. install/setup.bash
 	ros2 run py_basic_examples talker
 	
 - **console two** suscriber 
-	source ~/utadeo_ws/install/setup.bash
+	cd ~/utadeo_ws
+	. install/setup.bash
 	ros2 run py_basic_examples listener
 
 - **console three** review the node graph with rqt
@@ -179,7 +181,8 @@ Modify th file min_publisher.py to circle_turtle.py :
 ```
 - execute the script
 
-	source ~/utadeo_ws/install/setup.bash
+	cd ~/utadeo_ws
+	. install/setup.bash
 	ros2 run py_basic_examples circle_turtle
 
 - execute the robot
