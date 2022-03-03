@@ -30,8 +30,10 @@ Programming in Python
 ----------------
 
 - Create a package:
+```
 	cd ~/utadeo_ws/src
 	ros2 pkg create --build-type ament_python py_basic_examples
+```
 - Create the python file min_publisher.py in folder ~/utadeo_ws/src/py_basic_examples/py_basic_examples
 
 ```
@@ -120,29 +122,35 @@ entry_points={
 - the file setup.cfg configure for ros2 where is the package(do not change)
 
 - You should have installed the packages (*rclpy* e *std_msgs*), but is better to execute in console `rosdep`.
+```
 	cd ~/utadeo_ws/
-	rosdep install -i --from-path src/py_basic_examples --rosdistro foxy -y
-
+	rosdep install -i --from-path src/py_basic_examples --rosdistro galactic -y
+```
 - compile for generate the link to the  script with ros2
+```
 	cd ~/utadeo_ws/
 	colcon build --packages-select py_basic_examples
-
+```
 
 ## testing
 
 - **console one** publisher 
+```
 	cd ~/utadeo_ws
 	. install/setup.bash
 	ros2 run py_basic_examples talker
-	
+```	
 - **console two** suscriber 
+```
 	cd ~/utadeo_ws
 	. install/setup.bash
 	ros2 run py_basic_examples listener
+```
 
 - **console three** review the node graph with rqt
-    rqt
-
+```
+	rqt
+```
  
 ## Connecting to Turtlesim (our robot)
 
@@ -153,10 +161,13 @@ Modify th file min_publisher.py to circle_turtle.py :
 - add library to twist message
 	from geometry_msgs.msg import Twist
 - change node name:
+```
 	super().__init__('circle_turtle')
+```
 - change type of message and name of topy
+```
 	self.publisher_ = self.create_publisher(Twist, 'cmd_vel', 10)
-
+```
 - modify the function `timer_callback` to send the required type of message.
 ```
     def timer_callback(self):
@@ -167,7 +178,7 @@ Modify th file min_publisher.py to circle_turtle.py :
         self.get_logger().info(f'linear vel: {msg.linear.x}, angular vel {msg.angular.z}' )
         self.i += 1
 ```
-- modify  *package.xml* to add the package `geometry_msgs`
+- modify  *package.xml* to add the package `geometry_msgs` after the license tag:
  
 	<exec_depend>geometry_msgs<exec_depend>
 
@@ -180,12 +191,13 @@ Modify th file min_publisher.py to circle_turtle.py :
         ],
 ```
 - execute the script
-
+```
 	cd ~/utadeo_ws
 	. install/setup.bash
 	ros2 run py_basic_examples circle_turtle
-
+```
 - execute the robot
+```
 	ros2 run turtlesim turtlesim_node --ros-args --remap turtle1/cmd_vel:=/cmd_vel
-
+```
 
