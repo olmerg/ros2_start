@@ -1,0 +1,32 @@
+version: '3.7'
+
+volumes: 
+  utadeo-volume:
+    driver: local
+    driver_opts: 
+      type: none
+      o: bind
+      device: /home/robot/utadeo_ws
+
+services:
+  scooby-docker:
+    image: base-development
+    build: .
+    container_name: utadeo-development
+    volumes:
+      - $HOME/.Xauthority:/root/.Xauthority
+      - /tmp/.X11-unix/:/tmp/.X11-unix 
+      - utadeo-volume:/home/ws
+    environment: 
+      - ROS_DOMAIN_ID=25
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    # devices:
+    #   - "/dev/ttyACM0:/dev/ttyACM0" # ARM
+    network_mode: "host"
+    working_dir: /home/ws
+    privileged: true
+    init: true
+    stdin_open: true
+    tty: true
+    command: /bin/bash

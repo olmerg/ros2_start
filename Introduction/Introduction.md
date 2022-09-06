@@ -1,4 +1,4 @@
----
+--
 author:
 - Olmer Garcia-Bedoya
 title: ROS Introduction
@@ -22,45 +22,28 @@ of converting ROS 2 based prototypes into products. An original "Why ROS
 2?" article from the ROS 2 design documents website, gives background
 and rationale for the ROS 2 re-design decision.
 
-ROS 2 provides new capabilities that ROS originally did not. Beginning
-with a layered architecture that separates the ROS client layer (RCL)
+ROS 2 provides new capabilities that ROS originally did not. Beginning with a layered architecture that separates the ROS client layer (RCL)
 from the ROS middleware layer (RMW). The RCL provides the developer
 interface and the RMW layer enables compatibility with different
 interchangeable low-level communication protocols. The RMW is built on
 top of the Data Distribution Service (DDS), a certifiable real-time
-publish/subscribe protocol designed for safety critical systems. DDS
-makes ROS 2 a more robust and interoperable framework. This architecture
-separates the lowest level protocol (DDS) details, from the application
-developer layer. Layered abstractions allow developers to focus on their
-unique application, algorithm, or driver instead of the underlying
+publish/subscribe protocol designed for safety critical systems. DDS makes ROS 2 a more robust and interoperable framework. This architecture separates the lowest level protocol (DDS) details, from the application developer layer. Layered abstractions allow developers to focus on their unique application, algorithm, or driver instead of the underlying
 details.
 
 ![ROS 2 layered architecture. from
 [amazon](https://aws.amazon.com/es/blogs/robotics/ros-2-foxy-fitzroy-robot-development/)amazon](image-2.png)
 
-ROS 2 also adds new advanced features, like Quality of Service (QoS)
-settings to tune communication between processes, and lifecycle nodes
-for managing deterministic system startup and shut down. In addition,
-ROS2 relies on more up to date C++ 14 and Python 3 language standards
-and libraries. ROS 2 Foxy is the latest LTS version and it is defined by
-aws amazon like ["the most secure and reliable ROS distribution to date
-for production robotics application
-development"](https://aws.amazon.com/es/blogs/robotics/ros-2-foxy-fitzroy-robot-development/)"the
+ROS 2 also adds new advanced features, like Quality of Service (QoS) settings to tune communication between processes, and lifecycle nodes for managing deterministic system startup and shut down. In addition, ROS2 relies on more up to date C++ 14 and Python 3 language standards and libraries. ROS 2 Foxy is the latest LTS version and it is defined by aws amazon like ["the most secure and reliable ROS distribution to date for production robotics application development"](https://aws.amazon.com/es/blogs/robotics/ros-2-foxy-fitzroy-robot-development/)"the
 most secure and reliable ROS distribution to date for production
 robotics application development".
 
-In this section is presented the ROS concepts divided in three concept
-that implement ROS: Communications between program or nodes(plumbing), a
-cross platform set of libraries to implements program for robots and a
+In this section is presented the ROS concepts divided in three concept that implement ROS: Communications between program or nodes(plumbing), a cross platform set of libraries to implements program for robots and a
 tooling set to debug and manipulate the information of a robot.
 
 Communication
 -------------
 
--   **nodes.** One node is basically a program or executable **.** Each
-    node in ROS should be responsible for a single, module purpose (e.g.
-    one node for controlling wheel motors, one node for controlling a
-    laser range-finder, etc). Each node can send and receive data to
+-   **nodes.** One node is basically a program or executable **.** Each     node in ROS should be responsible for a single, module purpose (e.g.     one node for controlling wheel motors, one node for controlling a     laser range-finder, etc). Each node can send and receive data to
     other nodes via topics, services, actions, or parameters. A full
     robotic system is comprised of many nodes working in concert. In ROS
     2, a single executable (C++ program, Python program, etc.) can
@@ -96,10 +79,8 @@ ROS 2 offers a rich variety of Quality of Service (QoS) policies that
 allow you to tune communication between nodes. With the right set of
 Quality of Service policies, ROS 2 can be as reliable as TCP or as
 best-effort as UDP, with many, many possible states in between. In this
-point I invite you to read [About Quality of
-service](https://index.ros.org/doc/ros2/Concepts/About-Quality-of-Service-Settings/)
-where are explained the QoS policies, QoS profiles, QoS compatibilities
-and QoS events available inside ROS2.
+point I invite you to read [About Quality of service](https://index.ros.org/doc/ros2/Concepts/About-Quality-of-Service-Settings/)
+where are explained the QoS policies, QoS profiles, QoS compatibilities and QoS events available inside ROS2.
 
 Development
 -----------
@@ -141,8 +122,8 @@ Tools
     done on the command line, but it provides an easier, more
     user-friendly way to manipulate ROS 2 elements.
 
-    -   **[rqt_console](https://index.ros.org/p/rqt_console/)**.
-        rqt_console provides a GUI plugin for displaying and filtering
+    -   **[rqt_bash](https://index.ros.org/p/rqt_bash/)**.
+        rqt_bash provides a GUI plugin for displaying and filtering
         ROS messages. ROS 2's logger levels are ordered by severity:
         Fatal, Error, Warn, Info and Debug.
 
@@ -157,44 +138,17 @@ Tools
     visualized here to determine in one interface how the perception is
     working in the robot and in some case give the mission to the robot.
 
-Ros Foxy Installation
+Ros Foxy Docker
 =====================
 
-Based in [index ros
-page](https://index.ros.org/doc/ros2/Installation/Foxy/), first
-configure the ubuntu package manager (deb) to managed the ros package.
-
-Ros Foxy Installation\
-`sudo apt update && sudo apt install curl gnupg2 lsb-release`\
-`curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -`\
-`sudo sh -c ’echo "deb [arch=(dpkg –print-architecture)] http://packages.ros.org/ros2/ubuntu (lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list’`\
-`sudo apt update`\
-Install ros desktop(recommended):\
-`sudo apt install ros-foxy-desktop ros-foxy-turtlesim ros-foxy-gazebo-ros`\
-Install all the ros package will require around $2.5GB$ no disk. There
-exist the option to install ros-base if your are working in a headless
-computer. For install new package just make apt install
-*ros-foxy-namepackage*.
-
-Now configure the [Enviroment
-Setup](https://index.ros.org/doc/ros2/Tutorials/Configuring-ROS2-Environment/)
-of Ubuntu:\
-`echo source /opt/ros/foxy/setup.bash >> ~/.bashrc`\
-`echo "export ROS_DOMAIN_ID=25" >> ~/.bashrc`\
-Note that the number $25$ can be any number that you which, but if it is
-the same in two machine in the same network it will discover the nodes
-of the other machines.
-
+TODO: explain
 
 
 
 Turtlesim 
 =========
 
-Turtlesim is a lightweight simulator for learning ROS 2. It illustrates
-what ROS 2 does at the most basic level, to give you an idea of what you
-will do with a real robot or robot simulation later on. This simulator
-has some nodes , which you can review with the command
+Turtlesim is a lightweight simulator for learning ROS 2. It illustrates what ROS 2 does at the most basic level, to give you an idea of what you will do with a real robot or robot simulation later on. This simulator has some nodes , which you can review with the command
 `ros2 pkg executables turtlesim` . here we are goin two use two:
 
 -   turtlesim turtlesim_node. This is the simulator , which open the
@@ -203,29 +157,28 @@ has some nodes , which you can review with the command
 -   turtlesim turtle_teleop_key. This let to manipulate the turtlesim
     with the keyboard sending commands thrown topics.
 
-For run a node in ros2, you should open a console and write *ros2 run
-namePackage nameNode.* For our exercise we are going to open two console
-and execute one node in each console, adittionally we are going open in
-a third console for execute *rqt*
+For run a node in ros2, you should open a bash and write *ros2 run namePackage nameNode.* For our exercise we are going to open two bash
+and execute one node in each bash, adittionally we are going open in
+a third bash for execute *rqt*
 
--   **console1**. *ros2 run turtlesim turtlesim_node*
+-   **bash 1**. *ros2 run turtlesim turtlesim_node*
 
--   **console 2.** *ros2 run turtlesim turtle_teleop_key*
+-   **bash 2.** *ros2 run turtlesim turtle_teleop_key*
 
--   **console 3.** *rqt .* Inside this app go to
+-   **bash 3.** *rqt .* Inside this app go to
     plugins-\>Introspection-Node graph
 
 ![image](turtlesim1){width="1\\columnwidth"}
 
 After you open this nodes or program you can manipulate the turtle while
-have active the console2 the turtle running in the console1, that is
+have active the bash2 the turtle running in the bash1, that is
 performed because the teleop node publish a command called
 /turtle1/cmd_vel through a topic with type geometry_msgs/msg/twist,
 compose by a vector of the angular speed and the linear speed of the
 turtle. To understand this, I invite you, inside the
 *rqt-\>plugins-\>Topics Monitor* to review the structure of the message,
 and test what happen when you move the robot through the arrows (in
-console2), which value are send to the turtle slecting this topic in
+bash2), which value are send to the turtle slecting this topic in
 *rqt.* Other nice exercise is try to manipulate the turtle from
 *rqt-\>plugins-\>Topics publisher.* Here you can make that the turtle
 generate a circle giving a linear speed in $x$ and an angular speed in
@@ -260,7 +213,7 @@ Some examples:*
     communication forms has a node)*
 
 -   ros2 topic echo /turtle1/cmd/vel (suscribe to specific topic to
-    print in console)
+    print in bash)
 
 -   *ros2 topic list -t (list the topics availables with the message
     type)*
@@ -272,7 +225,7 @@ with letter keys G\|B\|V\|C\|D\|E\|R\|T to make to move to some
 orientation the turtle(*goal*). The F key will cancel a goal
 mid-execution, demonstrating the preemptable feature of actions. Other
 form to review this concept is change the goal during the execution of
-other task. I invite to review console1 and console2 to check message.
+other task. I invite to review bash1 and bash2 to check message.
 More informataion review the turorial rosactions. If you want to send an
 action to the turtle you can test:
 
@@ -287,10 +240,10 @@ file](https://en.wikipedia.org/wiki/YAML), the cli command *ros2 param
 *plugins-\>configuration-\>Dynamic reconfigure.* Usually this data is
 use to configure the specific ip of a robot or the name of the robot.
 
-All the information printed in console of each node is managed by a
+All the information printed in bash of each node is managed by a
 topic. This ROS 2's logger levels are ordered by severity: Fatal, Error,
 Warn, Info and Debug, to know more about it please visit the tutorial
-[ROSCONSOLE](https://index.ros.org/doc/ros2/Tutorials/Rqt-Console/Using-Rqt-Console/#rqt-console).
+[ROSbash](https://index.ros.org/doc/ros2/Tutorials/Rqt-bash/Using-Rqt-bash/#rqt-bash).
 Other insteresting tool is ROSBAG, which let to record all the
 communication between nodes, which lets that you can then replay the
 data to reproduce the results of your tests and experiments. I recommend
@@ -299,13 +252,9 @@ the tutorial
 and if you want to review advanced like quality of services(QoS) view
 [ROSBAGQOS](https://index.ros.org/doc/ros2/Tutorials/Ros2bag/Overriding-QoS-Policies-For-Recording-And-Playback/#ros2bag-qos-override).
 
-Manage many console in a real scenary is not a good approach, to solve
+Manage many bash in a real scenary is not a good approach, to solve
 this problem ros has the option to create a launch file which running a
-single console with the *ros2 launch* command will start up your entire
+single bash with the *ros2 launch* command will start up your entire
 system - all nodes and their configurations - at once. For our tutorial
 good start is
 [ROSLAUNCH](https://index.ros.org/doc/ros2/Tutorials/Launch-Files/Creating-Launch-Files/#ros2launch).
-
-
-
-
