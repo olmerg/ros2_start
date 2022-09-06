@@ -3,12 +3,19 @@ Este repositorio es una serie de tutoriales sobre ros2.
 ## instalación del docker
 
 1. [recomendado]descargar la imagen del docker (solo la primera vez)
+
 	docker pull osrf/ros:foxy-desktop
+
 2. dar permisos para que pueda tener interface grafica el docker
+
 	xhost +si:localuser:root
+
 3. ejecutar el docker
+
 	docker compose up --build	
+
 4. en nuevas consolas abrir lineas de comando (o realizarlo por visual studio code)
+
 	docker exec -it utadeo-development /bin/bash
 
 5. [tutorial turtlesim](Introduction/Introduction.md)
