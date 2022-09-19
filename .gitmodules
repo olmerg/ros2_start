@@ -1,0 +1,4 @@
+[submodule "src/lesson_urdf"]
+	path = src/lesson_urdf
+	url = https://github.com/olmerg/lesson_urdf.git
+

@@ -3,7 +3,7 @@ Programming in ROS2
 
 based in [ros docs-foxy](https://docs.ros.org/en/foxy/Tutorials.html#beginner-client-libraries)
 
-Create Workspace
+Create Workspace (not apply for docker)
 ----------------
 
 -   Install required
@@ -14,9 +14,9 @@ Create Workspace
 
 -   Create Workspace
 
-    *mkdir -p \~/utadeo_ws/src*
+    *mkdir -p \~/ros2_start/src*
 
-    *cd \~/utadeo_ws/src*
+    *cd \~/ros2_start/src*
 
 -   Build
 
@@ -24,14 +24,14 @@ Create Workspace
 
 Underlay Vs overLay
 
-*echo source \~/utadeo_ws/install/setup.bash \>\> \~/.bashrc*
+*echo source \~/ros2_start/install/setup.bash \>\> \~/.bashrc*
 
 Programming in Python
 ----------------
 
 - Create a package:
 ```
-	cd ~/utadeo_ws/src
+	cd src
 	ros2 pkg create --build-type ament_python py_basic_examples
 ```
 - Create the python file min_publisher.py in folder ~/utadeo_ws/src/py_basic_examples/py_basic_examples
