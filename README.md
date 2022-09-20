@@ -3,9 +3,10 @@ Este repositorio es una serie de tutoriales sobre ros2.
 ## instalación del docker
 
 0. Copiar esta carpeta en un lugar conocido
+
 	git clone https://github.com/olmerg/ros2_start.git
 	cd ros2_start
-	git submodule update
+	git submodule update --init
 
 1. [recomendado]descargar la imagen del docker (solo la primera vez)
 
